@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { X, ArrowLeft, ChevronLeft } from "lucide-react";
 
-const LoginPopup = ({ isOpen, onClose, onContinue, onForgot }) => {
+const LoginPopup = ({ isOpen, onClose, onContinue, onForgot, onSignup }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -194,7 +194,7 @@ const LoginPopup = ({ isOpen, onClose, onContinue, onForgot }) => {
           <div className="text-center mt-6">
             <span className="text-[#595959]">Don't have an account? </span>
             <button
-              onClick={() => navigate('/signup')}
+              onClick={onSignup}
               className="text-[#AE5D01] font-semibold hover:text-amber-800 cursor-pointer transition-colors border-b-2 border-[#AE5D01] hover:border-amber-800"
             >
               Signup
@@ -202,13 +202,13 @@ const LoginPopup = ({ isOpen, onClose, onContinue, onForgot }) => {
           </div>
 
           <div className="flex justify-start mt-6 md:mt-20">
-            <button
+            {/* <button
               onClick={handleGoBack}
               className="inline-flex items-center text-[#703102] cursor-pointer px-4 py-2 border border-[#AE5D01] rounded-full hover:bg-orange-50 transition-colors"
             >
               <ChevronLeft className="w-4 h-4 mr-2" />
               Go back
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { HiMenu, HiX } from 'react-icons/hi';
 import { CiHeart, CiSearch, CiShoppingCart, CiUser } from 'react-icons/ci';
 import { NavLink, useNavigate } from 'react-router-dom';
 import LoginPopup from './Login';
+import SignupPopup from './Signup';
 import ForgetPopup from './Forget';
 import OtpPopup from './OTP';
 import CPasswordPopup from './CPassword';
@@ -13,6 +14,7 @@ import CPasswordPopup from './CPassword';
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoginOpen, setIsLoginOpen] = useState(false);
+    const [isSignupOpen, setIsSignupOpen] = useState(false);
     const [isForgetOpen, setIsForgetOpen] = useState(false);
     const [isOtpOpen, setIsOtpOpen] = useState(false);
     const [isCPasswordOpen, setIsCPasswordOpen] = useState(false);
@@ -35,6 +37,7 @@ const Navbar = () => {
     // Flow handlers
     const closeAllAuthPopups = () => {
         setIsLoginOpen(false);
+        setIsSignupOpen(false);
         setIsForgetOpen(false);
         setIsOtpOpen(false);
         setIsCPasswordOpen(false);
@@ -46,6 +49,16 @@ const Navbar = () => {
         navigate('/');
     };
 
+    const handleGoToSignup = () => {
+        setIsLoginOpen(false);
+        setIsSignupOpen(true);
+    };
+
+    const handleGoToLogin = () => {
+        setIsSignupOpen(false);
+        setIsLoginOpen(true);
+    };
+
     const handleGoToForget = () => {
         setIsLoginOpen(false);
         setIsForgetOpen(true);
@@ -54,6 +67,11 @@ const Navbar = () => {
     const handleForgetContinue = () => {
         setIsForgetOpen(false);
         setIsOtpOpen(true);
+    };
+
+    const handleForgetGoBack = () => {
+        setIsForgetOpen(false);
+        setIsLoginOpen(true);
     };
 
     const handleOtpContinue = () => {
@@ -307,11 +325,18 @@ const Navbar = () => {
                 onClose={() => setIsLoginOpen(false)}
                 onContinue={handleLoginContinue}
                 onForgot={handleGoToForget}
+                onSignup={handleGoToSignup}
+            />
+            <SignupPopup 
+                isOpen={isSignupOpen} 
+                onClose={() => setIsSignupOpen(false)}
+                onLogin={handleGoToLogin}
             />
             <ForgetPopup 
                 isOpen={isForgetOpen} 
                 onClose={() => setIsForgetOpen(false)}
                 onContinue={handleForgetContinue}
+                onGoBack={handleForgetGoBack}
             />
             <OtpPopup 
                 isOpen={isOtpOpen} 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ChevronLeft,X } from "lucide-react";
 
-const ForgetPopup = ({ isOpen, onClose, onContinue }) => {
+const ForgetPopup = ({ isOpen, onClose, onContinue, onGoBack }) => {
   const [formData, setFormData] = useState({
     email: ""
   });
@@ -28,21 +28,9 @@ const ForgetPopup = ({ isOpen, onClose, onContinue }) => {
   };
 
   const handleGoBack = () => {
-    // Navigate to the previous page in browser history
-    console.log("Go back clicked");
-    try {
-      // Check if there's history to go back to
-      if (window.history.length > 1) {
-        window.history.back();
-      } else {
-        console.log("No history to go back to, closing popup");
-        onClose && onClose();
-      }
-    } catch (error) {
-      console.error("Error going back:", error);
-      // Fallback: close the popup
-      onClose && onClose();
-    }
+    // Close forget password popup and open login popup
+    console.log("Go back clicked - redirecting to login");
+    onGoBack && onGoBack();
   };
 
   if (!isOpen) return null;

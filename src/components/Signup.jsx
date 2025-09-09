@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { X, ChevronLeft } from "lucide-react";
 import OtpPopup from "./OTP";
-import LoginPopup from "./Login";
-import CPasswordPopup from "./CPassword";
 
-const SignupPopup = ({ isOpen, onClose }) => {
+const SignupPopup = ({ isOpen, onClose, onLogin }) => {
   const [isOtpPopupOpen, setIsOtpPopupOpen] = useState(false);
-  const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -39,12 +36,9 @@ const SignupPopup = ({ isOpen, onClose }) => {
   };
 
   const handleLoginClick = () => {
-    setIsLoginPopupOpen(true);
+    onLogin && onLogin();
   };
 
-  const closeLoginPopup = () => {
-      setIsLoginPopupOpen(false);
-  }
 
   const handleGoBack = () => {
     // Navigate to the previous page in browser history
@@ -230,13 +224,13 @@ const SignupPopup = ({ isOpen, onClose }) => {
           </div>
 
           <div className="flex justify-start mt-6 md:mt-20">
-            <button
+            {/* <button
               onClick={handleGoBack}
               className="inline-flex items-center text-[#703102] cursor-pointer px-4 py-2 border border-[#AE5D01] rounded-full hover:bg-orange-50 transition-colors"
             >
               <ChevronLeft className="w-4 h-4 mr-2" />
               Go back
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
@@ -244,10 +238,6 @@ const SignupPopup = ({ isOpen, onClose }) => {
       <OtpPopup
         isOpen={isOtpPopupOpen}
         onClose={closeOtpPopup}
-      />
-      <CPasswordPopup
-        isOpen={isLoginPopupOpen} 
-        onClose={closeLoginPopup}
       />
     </div>
   );
