@@ -46,7 +46,7 @@ const SOtpPopup = ({ isOpen, onClose, onContinue, onGoBack }) => {
         {/* Close Button */}
         <button
           onClick={() => navigate("/")}
-          className="absolute top-4 right-4 z-20 p-2 text-gray-500 cursor-pointer hover:text-gray-700 transition-colors"
+          className="absolute top-1 right-1 lg:top-4 lg:right-4 z-20 p-2 text-gray-500 cursor-pointer hover:text-gray-700 transition-colors"
         >
           <X size={28} />
         </button>

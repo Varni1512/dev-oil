@@ -63,13 +63,13 @@ const BlogSection = () => {
                 className="w-[348px] h-[362px] lg:h-[500px] lg:w-[480px]"
               />
               
-              <div className="p-4 sm:p-5 md:p-6">
+              <div className="p-4 sm:p-5 md:p-4">
                 {/* Meta Information */}
-                <div className="flex items-center gap-4 mb-4">
-                  <span className={`px-3 py-1 rounded-full text-xs lg:text-base font-bold uppercase tracking-wide text-[#AE5D01] bg-very-light-orange`}>
+                <div className="flex items-center gap-16 mb-4">
+                  <span className={`px-3 py-1 rounded-full text-xs lg:text-base font-bold uppercase tracking-wide text-[#AE5D01]  bg-[#FCE289]`}>
                     {post.category}
                   </span>
-                  <div className="flex items-center text-[#AE5D01] text-xs font-thin">
+                  <div className="flex items-center text-[#AE5D01] text-xs font-thin ">
                   <Calendar/>
                     {post.date}
                   </div>
@@ -97,9 +97,9 @@ const BlogSection = () => {
 
         {/* View All Blogs Button */}
         <div className="text-center">
-          <button className="bg-[#D97706] text-white cursor-pointer px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium text-sm sm:text-base transition-colors duration-200 shadow-md hover:shadow-lg">
+          <Link to='/blog' className="bg-[#703102] text-white cursor-pointer px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium text-sm sm:text-base transition-colors duration-200 shadow-md hover:shadow-lg">
             View All Blogs
-          </button>
+          </Link>
         </div>
       </div>
     </div>
