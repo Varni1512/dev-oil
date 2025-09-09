@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { ChevronLeft,X } from "lucide-react";
+import { ChevronLeft, X } from "lucide-react";
+import { useNavigate } from "react-router-dom"; // ✅ add this
 
 const OtpPopup = ({ isOpen, onClose, onContinue }) => {
   const [formData, setFormData] = useState({
     otp: "",
   });
+
+  const navigate = useNavigate(); // ✅ hook for navigation
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,16 +22,16 @@ const OtpPopup = ({ isOpen, onClose, onContinue }) => {
     if (onContinue) {
       onContinue();
     } else {
-      onClose && onClose();
+      // ✅ Redirect to cPassword.jsx
+      navigate("/cPassword");
     }
   };
 
   const handleLoginClick = () => {
-    console.log("Navigate to login");
+    console.log("Resend OTP");
   };
 
   const handleGoBack = () => {
-    // Navigate to the previous page in browser history
     window.history.back();
   };
 
@@ -36,7 +39,7 @@ const OtpPopup = ({ isOpen, onClose, onContinue }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop with blur */}
+      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-opacity-30 backdrop-blur-sm"
         onClick={onClose}
@@ -45,12 +48,13 @@ const OtpPopup = ({ isOpen, onClose, onContinue }) => {
       <div className="relative w-full max-w-7xl max-h-[95vh] overflow-y-auto bg-[#FFFBEB] rounded-3xl shadow-2xl border-2 border-[#D97706] flex flex-col lg:flex-row">
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={() => navigate("/")}
           className="absolute top-4 right-4 z-20 p-2 text-gray-500 cursor-pointer hover:text-gray-700 transition-colors"
         >
           <X size={28} />
         </button>
 
+        {/* Left Section */}
         <div className="w-full lg:w-1/2 p-6 sm:p-8 flex flex-col items-center order-1">
           <div className="text-center mb-6">
             <h1 className="font-inter text-3xl lg:text-4xl font-bold text-[#703102] mb-2 leading-tight">
@@ -69,78 +73,21 @@ const OtpPopup = ({ isOpen, onClose, onContinue }) => {
               className="w-full h-auto object-cover"
             />
           </div>
-
-          <div className="space-y-3 w-full max-w-[462px]">
-            {/* Feature items... */}
-            <div className="flex items-center space-x-3">
-              <div className="w-6 h-6 bg-[#AE5D01] rounded-full flex items-center justify-center flex-shrink-0">
-                <svg
-                  className="w-4 h-4 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <span className="font-inter font-medium text-lg text-[#703102]">
-                100% Pure & Natural
-              </span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-6 h-6 bg-[#AE5D01] rounded-full flex items-center justify-center flex-shrink-0">
-                <svg
-                  className="w-4 h-4 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <span className="font-inter font-medium text-lg text-[#703102]">
-                Premium Quality Guaranteed
-              </span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-6 h-6 bg-[#AE5D01] rounded-full flex items-center justify-center flex-shrink-0">
-                <svg
-                  className="w-4 h-4 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <span className="font-inter font-medium text-lg text-[#703102]">
-                Free Shipping on Orders Above ₹999
-              </span>
-            </div>
-          </div>
         </div>
 
-        <div className="w-full lg:w-1/2 p-6 sm:p-8 lg:p-8 flex flex-col justify-center bg-white lg:bg-white lg:bg-opacity-50 order-2">
+        {/* Right Section */}
+        <div className="w-full lg:w-1/2 p-6 sm:p-8 lg:p-8 flex flex-col justify-center bg-white lg:bg-opacity-50 order-2">
           <div className="text-center mb-8">
             <h1 className="font-inter text-3xl lg:text-4xl font-bold text-[#703102] mb-2 leading-tight">
               Check your inbox
             </h1>
-            <p class="font-inter font-medium text-xl text-center  leading-none text-[#AE5D01]">
+            <p className="font-inter font-medium text-xl text-center leading-none text-[#AE5D01]">
               Enter the verification code we just sent to<br /> xyz@gmail.com
             </p>
           </div>
 
+          {/* OTP Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Form inputs... */}
             <div className="relative">
               <label className="absolute left-2 -top-3 bg-white px-1 text-sm font-medium text-[#703102]">
                 Enter Code
@@ -183,7 +130,6 @@ const OtpPopup = ({ isOpen, onClose, onContinue }) => {
             </button>
           </div>
         </div>
-        
       </div>
     </div>
   );

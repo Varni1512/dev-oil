@@ -46,7 +46,7 @@ const CPasswordPopup = ({ isOpen, onClose, onContinue }) => {
       <div className="relative w-full max-w-7xl max-h-[95vh] overflow-y-auto bg-[#FFFBEB] rounded-3xl shadow-2xl border-2 border-[#D97706] flex flex-col lg:flex-row">
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={() => (window.location.href = "/")}
           className="absolute top-4 right-4 z-20 p-2 text-gray-500 cursor-pointer hover:text-gray-700 transition-colors"
         >
           <X size={28} />

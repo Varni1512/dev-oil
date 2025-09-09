@@ -15,6 +15,7 @@ import TermsOfService from './pages/TermsOfService';
 import ScrollToTop from './components/ScrollToTop';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import CPasswordPopup from './components/CPassword';
 
 
 
@@ -25,6 +26,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/cPassword" element={<CPasswordPopup isOpen={true} onClose={() => {}} />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog-details" element={<BlogDetails />} />
         <Route path="/login" element={<Login />} />

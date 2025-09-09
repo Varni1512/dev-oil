@@ -164,7 +164,7 @@ const LoginPopup = ({ isOpen, onClose, onContinue, onForgot, onSignup }) => {
                 Password
               </label>
               <input
-                type="number"
+                type="text"
                 name="Password"
                 value={formData.number}
                 onChange={handleInputChange}
