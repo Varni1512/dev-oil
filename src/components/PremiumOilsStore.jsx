@@ -47,7 +47,7 @@ const SingleOilCard = ({ oil, renderStars }) => {
       {/* RIGHT SIDE: Content container takes up remaining space. Padding and spacing are reduced for mobile. */}
       <div className="bg-white w-3/5 p-2 sm:p-4 flex flex-col justify-center space-y-2 text-start">
         {/* Title and Rating: Responsive font sizes. */}
-        <div>
+        <div className='mt-4 lg:mt-0'>
           <h2 className="text-sm sm:text-base font-medium text-gray-800 mb-1">{oil.name}</h2>
           <div className="flex items-center gap-2 mb-1 sm:mb-2">
             <div className="flex gap-1">{renderStars(oil.rating)}</div>
@@ -68,7 +68,11 @@ const SingleOilCard = ({ oil, renderStars }) => {
         </div>
 
         {/* Available Sizes: Adjusted padding and font size. */}
+        <p className="hidden sm:block text-sm font-medium text-gray-700 mb-2">
+          Available sizes:
+        </p>
         <div className="flex items-center gap-1 sm:gap-2 flex-wrap">
+
           {sizes.map((size) => (
             <button
               key={size.value}
@@ -119,7 +123,7 @@ const PremiumOilsStore = () => {
 
   const oils = [
     { id: 1, name: 'Mustard Oil', rating: 5.0, reviews: 31, description: 'Pure cold-pressed mustard oil with natural pungency.', price: 110, originalPrice: 140, discount: '14% OFF', image: '/img2.png' },
-    { id: 2, name: 'Groundnut Oil', rating: 4.0, reviews: 24, description: 'Premium groundnut oil perfect for deep frying.', price: 120, originalPrice: 140, discount: '14% OFF', image: '/img2.png'},
+    { id: 2, name: 'Groundnut Oil', rating: 4.0, reviews: 24, description: 'Premium groundnut oil perfect for deep frying.', price: 120, originalPrice: 140, discount: '14% OFF', image: '/img2.png' },
     { id: 3, name: 'Sunflower Oil', rating: 4.8, reviews: 67, description: 'Light and healthy sunflower oil rich in vitamin E.', price: 120, originalPrice: 140, discount: '14% OFF', image: '/img1.png' },
     { id: 4, name: 'Coconut Oil', rating: 4.8, reviews: 45, description: 'Virgin coconut oil with natural aroma for cooking.', price: 230, originalPrice: 140, discount: '14% OFF', image: '/img1.png' },
     { id: 5, name: 'Safflower Oil', rating: 5.0, reviews: 23, description: 'Premium safflower oil with a high smoke point.', price: 120, originalPrice: 140, discount: '14% OFF', image: '/img2.png' },
@@ -179,9 +183,9 @@ const PremiumOilsStore = () => {
 
         {sortedOils.length > 0 && (
           <div className="flex justify-center pt-20">
-            <button className="px-6 py-2 border-2 border-[#703102] text-[#703102] cursor-pointer hover:bg-orange-50  font-semibold rounded-md">
+            <Link to="/blog" className="px-6 py-2 border-2 border-[#703102] text-[#703102] cursor-pointer hover:bg-orange-50  font-semibold rounded-md">
               View All Products
-            </button>
+            </Link>
           </div>
         )}
 

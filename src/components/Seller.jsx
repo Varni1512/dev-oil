@@ -13,25 +13,24 @@ const BestSellers = () => {
         }));
     };
 
-    // Sample product data
     const products = [
         {
             id: 1,
             name: "Mustard Oil",
-            rating: 4.0,
-            description: "Pure cold-pressed mustard oil with natural pungency and authentic...",
-            currentPrice: 120,
+            rating: 5,
+            description: "Pure cold-pressed mustard oil with natural pungency.",
+            currentPrice: 110,
             originalPrice: 140,
             discount: "14% OFF",
             sizes: ["500ml", "1L", "2L", "+ 2 more"],
-            image: "/oil.png"
+            image: "/oil.png" // Make sure this path is correct
         },
         {
             id: 2,
             name: "Mustard Oil",
-            rating: 4.0,
-            description: "Pure cold-pressed mustard oil with natural pungency and authentic...",
-            currentPrice: 120,
+            rating: 5,
+            description: "Pure cold-pressed mustard oil with natural pungency.",
+            currentPrice: 110,
             originalPrice: 140,
             discount: "14% OFF",
             sizes: ["500ml", "1L", "2L", "+ 2 more"],
@@ -40,9 +39,9 @@ const BestSellers = () => {
         {
             id: 3,
             name: "Mustard Oil",
-            rating: 4.0,
-            description: "Pure cold-pressed mustard oil with natural pungency and authentic...",
-            currentPrice: 120,
+            rating: 5,
+            description: "Pure cold-pressed mustard oil with natural pungency.",
+            currentPrice: 110,
             originalPrice: 140,
             discount: "14% OFF",
             sizes: ["500ml", "1L", "2L", "+ 2 more"],
@@ -51,9 +50,9 @@ const BestSellers = () => {
         {
             id: 4,
             name: "Mustard Oil",
-            rating: 4.0,
-            description: "Pure cold-pressed mustard oil with natural pungency and authentic...",
-            currentPrice: 120,
+            rating: 5,
+            description: "Pure cold-pressed mustard oil with natural pungency.",
+            currentPrice: 110,
             originalPrice: 140,
             discount: "14% OFF",
             sizes: ["500ml", "1L", "2L", "+ 2 more"],
@@ -61,97 +60,97 @@ const BestSellers = () => {
         }
     ];
 
-    // Star rating sub-component
     const StarRating = ({ rating }) => (
         <div className="flex items-center space-x-1">
             {[1, 2, 3, 4, 5].map((star) => (
                 <svg
                     key={star}
-                    className="w-4 h-4"
+                    className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400"
+                    fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
-                    strokeWidth="2.48"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    fill={star <= rating ? '#FACC15' : 'white'}
-                    stroke={star <= rating ? '#FACC15' : '#D1D5DB'}
                 >
-                    <path d="M10.3928 2.08716L12.9517 7.27119L18.674 8.10759L14.5334 12.1405L15.5106 17.838L10.3928 15.1466L5.27499 17.838L6.25217 12.1405L2.11157 8.10759L7.83388 7.27119L10.3928 2.08716Z" />
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
             ))}
             <span className="text-sm text-gray-600 ml-1">({rating})</span>
         </div>
     );
 
-    // Main Product Card component with the updated design
     const ProductCard = ({ product }) => {
-        // --- START: Added logic for size selection ---
-        // State to track the selected size index for THIS card
         const [selectedSizeIndex, setSelectedSizeIndex] = useState(1);
-        // --- END: Added logic for size selection ---
+
+        // Extracted badge component to avoid repetition
+        const Badge = () => (
+            <div className="bg-[#AE5D01] text-white px-2 py-1 rounded-md text-xs font-medium flex items-center gap-2">
+                <span>Wood pressed</span>
+                <button onClick={() => toggleFavorite(product.id)}>
+                    <Heart
+                        size={14}
+                        className="transition-all duration-200"
+                        fill={favorites[product.id] ? 'white' : 'none'}
+                    />
+                </button>
+            </div>
+        );
 
         return (
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-[1.24px] border-[#703102] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="relative bg-gray-50">
-                    <div className="absolute top-0 right-0 bg-[#AE5D01] text-white px-3 py-1 rounded-bl-full text-sm font-medium flex items-center gap-2 z-10">
-                        <span>Wood pressed</span>
-                        <div className="border-l border-white/50 h-4"></div>
-                        <button onClick={() => toggleFavorite(product.id)}>
-                            <Heart
-                                size={18}
-                                className="transition-all duration-200"
-                                // fill={favorites[product.id] ? 'white' : 'none'}
-                            />
-                        </button>
-                    </div>
-                    <div className="flex justify-center items-center h-full">
-                        <div className="relative w-full h-full">
-                            <img
-                                src={product.image}
-                                alt={product.name}
-                                className="w-full h-full object-contain"
-                            />
-                        </div>
-                    </div>
+            <div className="flex sm:block bg-white rounded-2xl shadow-lg overflow-hidden border border-amber-300 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative">
+                
+                {/* --- DESKTOP BADGE (Visible on sm screens and up) --- */}
+                <div className="hidden sm:flex absolute top-0 right-0 z-10">
+                    <Badge />
                 </div>
 
-                <div className="p-6">
-                    <h3 className="text-[22px] leading-[35px] font-normal font-inter text-[#111827]">
+                <div className="w-2/5 sm:w-full">
+                    <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+
+                <div className="w-3/5 sm:w-full p-3 sm:p-5 flex flex-col relative">
+                    {/* --- MOBILE BADGE (Hidden on sm screens and up) --- */}
+                    <div className="sm:hidden absolute top-0 right-0 z-10">
+                        <Badge />
+                    </div>
+
+                    <h3 className="text-base sm:text-2xl font-semibold font-inter text-gray-800 pr-20">
                         {product.name}
                     </h3>
-                    <StarRating rating={product.rating} />
-                    <p className="text-[#4B5563] text-[16px] leading-[25px] font-normal font-inter mt-3 mb-4">
+                    <div className="mt-0 sm:mt-0">
+                        <StarRating rating={product.rating} />
+                    </div>
+                    <p className="text-gray-500 text-xs sm:text-base font-normal mt-5  sm:mb-4 flex-grow">
                         {product.description}
                     </p>
-                    <div className="flex items-center space-x-2 mb-3">
-                        <span className="text-[25px] leading-[35px] font-bold font-inter text-[#111827]">
+                    
+                    <div className="flex items-center flex-wrap gap-x-2 mb-3 lg:-mt-3">
+                        <span className="text-lg sm:text-2xl font-bold text-gray-900">
                             ₹{product.currentPrice}
                         </span>
-                        <span className="text-[17px] leading-[25px] font-normal font-inter text-[#6B7280] line-through">
+                        <span className="text-sm sm:text-base text-gray-500 line-through">
                             ₹{product.originalPrice}
                         </span>
-                        <span className="bg-[#048A04] text-white px-1 py-0 rounded text-[16px] leading-[25px] font-bold font-inter">
+                        <span className="bg-green-600 text-white px-2 py-0.5 rounded text-xs sm:text-sm font-bold">
                             {product.discount}
                         </span>
                     </div>
 
-                    <div className="mb-4">
-                        <p className="text-[17px] leading-[25px] font-normal font-inter text-[#374151] mb-2">
+                    <div className="mb-4 mt-2">
+                        <p className="hidden sm:block text-sm font-medium text-gray-700 mb-2">
                             Available sizes:
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {product.sizes.map((size, index) => (
                                 <button
                                     key={index}
-                                    // --- START: Added onClick handler ---
                                     onClick={() => setSelectedSizeIndex(index)}
-                                    // --- END: Added onClick handler ---
-                                    className={`px-2 py-1 rounded-lg text-[12px] leading-[20px] font-normal font-inter border cursor-pointer transition-colors ${
-                                        // --- START: Changed condition to use state ---
+                                    className={`px-3 py-1 rounded-lg text-xs sm:text-sm border cursor-pointer transition-colors ${
                                         selectedSizeIndex === index
                                             ? 'bg-[#AE5D01] text-white border-[#AE5D01]'
-                                            : 'bg-white text-gray-700 border-gray-300 hover:border-[#AE5D01] hover:text-[#AE5D01]'
-                                        // --- END: Changed condition to use state ---
+                                            : 'bg-white text-gray-700 border-gray-400 hover:border-[#AE5D01] hover:text-[#AE5D01]'
                                     }`}
                                 >
                                     {size}
@@ -160,12 +159,12 @@ const BestSellers = () => {
                         </div>
                     </div>
 
-                    <div className="space-y-3">
-                        <button className="w-full bg-[#703102] hover:bg-[#703102] cursor-pointer text-white py-3 px-6 rounded-lg font-normal text-[20px] leading-[30px] font-inter text-center transition-colors duration-200 flex items-center justify-center space-x-2">
+                    <div className="mt-auto space-y-2">
+                        <button className="w-full bg-[#703102] hover:bg-amber-800 text-white py-2 px-4 rounded-lg font-medium text-sm sm:text-base transition-colors flex items-center justify-center gap-2">
                             <ShoppingCart size={18} />
                             <span>Add to Cart</span>
                         </button>
-                        <button className="w-full text-[20px] leading-[30px] font-inter bg-white hover:bg-orange-50 text-[#703102] py-3 px-6 rounded-lg cursor-pointer font-normal border-2 border-[#703102] transition-all duration-200 flex items-center justify-center space-x-2">
+                        <button className="w-full bg-white hover:bg-amber-50 text-[#703102] py-2 px-4 rounded-lg font-medium border-2 border-[#703102] transition-colors text-sm sm:text-base flex items-center justify-center gap-2">
                             <Zap size={18} />
                             <span>Buy Now</span>
                         </button>
@@ -195,7 +194,7 @@ const BestSellers = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                     {products.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
