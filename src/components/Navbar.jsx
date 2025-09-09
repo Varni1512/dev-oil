@@ -74,15 +74,35 @@ const Navbar = () => {
         setIsLoginOpen(true);
     };
 
+    const handleOtpGoBack = () => {
+        setIsOtpOpen(false);
+        setIsForgetOpen(true);
+    }
+
     const handleOtpContinue = () => {
         setIsOtpOpen(false);
         setIsCPasswordOpen(true);
     };
 
+    const handleSOtpGoBack = () => {
+        setIsOtpOpen(false);
+        setIsForgetOpen(true);
+    }
+
+    const handleSOtpContinue = () => {
+        setIsOtpOpen(false);
+        setIsCPasswordOpen(true);
+    };
+
+    const handleCpassGoBack = () => {
+        setIsCPasswordOpen(false);
+        setIsOtpOpen(true);
+    }
+
     const handleCPasswordContinue = () => {
         // After password reset, return to login
         setIsCPasswordOpen(false);
-        setIsLoginOpen(true);
+        navigate('/');
     };
 
     return (
@@ -123,37 +143,41 @@ const Navbar = () => {
                         </a>
                     </div>
 
-                    {/* Desktop Navigation Links */}
+                    {/* Desktop Navigation Links -- UPDATED SECTION -- */}
                     <div className='hidden lg:flex items-center space-x-6 xl:space-x-8'>
-                        <a href='#' className='text-[#703102] font-medium border-b-2 border-[#703102] pb-1  transition-colors'>Home</a>
-                        <a href='#' className='text-[#703102] font-medium  transition-colors relative group'>
+                        <NavLink to='/' className={({ isActive }) => `text-[#703102] font-medium pb-1 transition-colors relative group ${isActive ? "border-b-2 border-[#703102]" : ""}`}>
+                            Home
+                            {/* Show hover effect only when NOT active */}
+                            {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
+                        </NavLink>
+                        <NavLink to='/about' className={({ isActive }) => `text-[#703102] font-medium pb-1 transition-colors relative group ${isActive ? "border-b-2 border-[#703102]" : ""}`}>
                             About
-                            <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>
-                        </a>
-                        <a href='#' className='text-[#703102] font-medium  transition-colors relative group'>
+                             {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
+                        </NavLink>
+                        <NavLink to='/products' className={({ isActive }) => `text-[#703102] font-medium pb-1 transition-colors relative group ${isActive ? "border-b-2 border-[#703102]" : ""}`}>
                             Products
-                            <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>
-                        </a>
-                        <a href='#' className='text-[#703102] font-medium  transition-colors relative group'>
+                            {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
+                        </NavLink>
+                        <NavLink to='/podcast' className={({ isActive }) => `text-[#703102] font-medium pb-1 transition-colors relative group ${isActive ? "border-b-2 border-[#703102]" : ""}`}>
                             Podcast
-                            <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>
-                        </a>
-                        <a href='#' className='text-[#703102] font-medium  transition-colors relative group'>
+                            {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
+                        </NavLink>
+                        <NavLink to='/testimonials' className={({ isActive }) => `text-[#703102] font-medium pb-1 transition-colors relative group ${isActive ? "border-b-2 border-[#703102]" : ""}`}>
                             Testimonials
-                            <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>
-                        </a>
-                        <a href='#' className='text-[#703102] font-medium  transition-colors relative group'>
+                            {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
+                        </NavLink>
+                        <NavLink to='/contact' className={({ isActive }) => `text-[#703102] font-medium pb-1 transition-colors relative group ${isActive ? "border-b-2 border-[#703102]" : ""}`}>
                             Contact
-                            <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>
-                        </a>
-                        <a href='/blog' className='text-[#703102] font-medium  transition-colors relative group'>
+                           {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
+                        </NavLink>
+                        <NavLink to='/blog' className={({ isActive }) => `text-[#703102] font-medium pb-1 transition-colors relative group ${isActive ? "border-b-2 border-[#703102]" : ""}`}>
                             Blogs
-                            <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>
-                        </a>
-                        <a href='#' className='text-[#703102] font-medium  transition-colors relative group'>
+                           {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
+                        </NavLink>
+                        <NavLink to='/faqs' className={({ isActive }) => `text-[#703102] font-medium pb-1 transition-colors relative group ${isActive ? "border-b-2 border-[#703102]" : ""}`}>
                             FAQs
-                            <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>
-                        </a>
+                           {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
+                        </NavLink>
                     </div>
 
                     {/* User Icons */}
@@ -174,7 +198,7 @@ const Navbar = () => {
                         </button>
 
                         {/* User icon (only desktop) - Open login popup */}
-                        <button 
+                        <button
                             onClick={openLoginPopup}
                             className="hidden lg:flex h-8 w-10 lg:w-[76px] lg:h-12 cursor-pointer items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100 transition"
                         >
@@ -235,7 +259,7 @@ const Navbar = () => {
                                     onClick={handleMobileLinkClick}
                                     className={({ isActive }) => `flex items-center gap-4 py-4 font-medium ${isActive ? "text-orange-500" : "text-[#703102]"}`}
                                 >
-                                    <img src="/About.png" className="w-5 h-5" alt="About Icon"/>
+                                    <img src="/About.png" className="w-5 h-5" alt="About Icon" />
                                     <span>About</span>
                                 </NavLink>
                                 <NavLink
@@ -243,7 +267,7 @@ const Navbar = () => {
                                     onClick={handleMobileLinkClick}
                                     className={({ isActive }) => `flex items-center gap-4 py-4 font-medium ${isActive ? "text-orange-500" : "text-[#703102]"}`}
                                 >
-                                    <img src="/p.png" className="w-5 h-5" alt="Products Icon"/>
+                                    <img src="/p.png" className="w-5 h-5" alt="Products Icon" />
                                     <span>Products</span>
                                 </NavLink>
                                 <NavLink
@@ -251,7 +275,7 @@ const Navbar = () => {
                                     onClick={handleMobileLinkClick}
                                     className={({ isActive }) => `flex items-center gap-4 py-4 font-medium ${isActive ? "text-orange-500" : "text-[#703102]"}`}
                                 >
-                                    <img src="/Podcast.png" className="w-5 h-5" alt="Podcast Icon"/>
+                                    <img src="/Podcast.png" className="w-5 h-5" alt="Podcast Icon" />
                                     <span>Podcast</span>
                                 </NavLink>
                                 <NavLink
@@ -259,7 +283,7 @@ const Navbar = () => {
                                     onClick={handleMobileLinkClick}
                                     className={({ isActive }) => `flex items-center gap-4 py-4 font-medium ${isActive ? "text-orange-500" : "text-[#703102]"}`}
                                 >
-                                    <img src="/Testimonials.png" className="w-5 h-5" alt="Testimonials Icon"/>
+                                    <img src="/Testimonials.png" className="w-5 h-5" alt="Testimonials Icon" />
                                     <span>Testimonials</span>
                                 </NavLink>
                                 <NavLink
@@ -267,7 +291,7 @@ const Navbar = () => {
                                     onClick={handleMobileLinkClick}
                                     className={({ isActive }) => `flex items-center gap-4 py-4 font-medium ${isActive ? "text-orange-500" : "text-[#703102]"}`}
                                 >
-                                    <img src="/Contact.png" className="w-5 h-5" alt="Contact Icon"/>
+                                    <img src="/Contact.png" className="w-5 h-5" alt="Contact Icon" />
                                     <span>Contact</span>
                                 </NavLink>
                                 <NavLink
@@ -275,7 +299,7 @@ const Navbar = () => {
                                     onClick={handleMobileLinkClick}
                                     className={({ isActive }) => `flex items-center gap-4 py-4 font-medium ${isActive ? "text-orange-500" : "text-[#703102]"}`}
                                 >
-                                    <img src="/Blog.png" className="w-5 h-5" alt="Blogs Icon"/>
+                                    <img src="/Blog.png" className="w-5 h-5" alt="Blogs Icon" />
                                     <span>Blogs</span>
                                 </NavLink>
                                 <NavLink
@@ -283,14 +307,14 @@ const Navbar = () => {
                                     onClick={handleMobileLinkClick}
                                     className={({ isActive }) => `flex items-center gap-4 py-4 font-medium ${isActive ? "text-orange-500" : "text-[#703102]"}`}
                                 >
-                                    <img src="/faq.png" className="w-5 h-5" alt="FAQ Icon"/>
+                                    <img src="/faq.png" className="w-5 h-5" alt="FAQ Icon" />
                                     <span>FAQs</span>
                                 </NavLink>
                             </div>
 
                             {/* Login/Sign Up Button - now opens Login */}
                             <div className="mt-8 flex justify-center">
-                                <button 
+                                <button
                                     onClick={openLoginPopup}
                                     className="bg-[#703102] text-white px-8 py-3 rounded-lg font-medium hover:bg-amber-800 transition-colors"
                                 >
@@ -320,33 +344,35 @@ const Navbar = () => {
             </nav>
 
             {/* Auth Popups */}
-            <LoginPopup 
-                isOpen={isLoginOpen} 
+            <LoginPopup
+                isOpen={isLoginOpen}
                 onClose={() => setIsLoginOpen(false)}
                 onContinue={handleLoginContinue}
                 onForgot={handleGoToForget}
                 onSignup={handleGoToSignup}
             />
-            <SignupPopup 
-                isOpen={isSignupOpen} 
+            <SignupPopup
+                isOpen={isSignupOpen}
                 onClose={() => setIsSignupOpen(false)}
                 onLogin={handleGoToLogin}
             />
-            <ForgetPopup 
-                isOpen={isForgetOpen} 
+            <ForgetPopup
+                isOpen={isForgetOpen}
                 onClose={() => setIsForgetOpen(false)}
                 onContinue={handleForgetContinue}
                 onGoBack={handleForgetGoBack}
             />
-            <OtpPopup 
-                isOpen={isOtpOpen} 
+            <OtpPopup
+                isOpen={isOtpOpen}
                 onClose={() => setIsOtpOpen(false)}
                 onContinue={handleOtpContinue}
+                onGoBack={handleOtpGoBack}
             />
-            <CPasswordPopup 
-                isOpen={isCPasswordOpen} 
+            <CPasswordPopup
+                isOpen={isCPasswordOpen}
                 onClose={() => setIsCPasswordOpen(false)}
                 onContinue={handleCPasswordContinue}
+                onGoBack={handleCpassGoBack}
             />
         </div>
     )

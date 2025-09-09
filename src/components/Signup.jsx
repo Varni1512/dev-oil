@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { X, ChevronLeft } from "lucide-react";
 import OtpPopup from "./OTP";
+import SOtpPopup from "./Sotp";
 
 const SignupPopup = ({ isOpen, onClose, onLogin }) => {
-  const [isOtpPopupOpen, setIsOtpPopupOpen] = useState(false);
+  const [isSotpPopupOpen, setIsSotpPopupOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -28,11 +29,11 @@ const SignupPopup = ({ isOpen, onClose, onLogin }) => {
     if (!isFormValid) return; 
 
     console.log("Form submitted:", formData);
-    setIsOtpPopupOpen(true); 
+    setIsSotpPopupOpen(true); 
   };
 
-  const closeOtpPopup = () => {
-    setIsOtpPopupOpen(false);
+  const closeSotpPopup = () => {
+    setIsSotpPopupOpen(false);
   };
 
   const handleLoginClick = () => {
@@ -235,9 +236,9 @@ const SignupPopup = ({ isOpen, onClose, onLogin }) => {
         </div>
       </div>
       
-      <OtpPopup
-        isOpen={isOtpPopupOpen}
-        onClose={closeOtpPopup}
+      <SOtpPopup
+        isOpen={isSotpPopupOpen}
+        onClose={closeSotpPopup}
       />
     </div>
   );

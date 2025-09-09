@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { X, ArrowLeft, ChevronLeft } from "lucide-react";
+import { X, ChevronLeft } from "lucide-react";
 
 const LoginPopup = ({ isOpen, onClose, onContinue, onForgot, onSignup }) => {
   const navigate = useNavigate();
+  // FIX 1: Changed 'number' state property to 'password' for clarity
   const [formData, setFormData] = useState({
     email: "",
-    number: ""
+    password: "", 
   });
 
   const handleInputChange = (e) => {
@@ -29,11 +30,6 @@ const LoginPopup = ({ isOpen, onClose, onContinue, onForgot, onSignup }) => {
   const handleForgotClick = (e) => {
     e.preventDefault();
     onForgot && onForgot();
-  };
-
-  const handleGoBack = () => {
-    // Navigate to the previous page in browser history
-    window.history.back();
   };
 
   if (!isOpen) return null;
@@ -76,7 +72,7 @@ const LoginPopup = ({ isOpen, onClose, onContinue, onForgot, onSignup }) => {
 
           <div className="space-y-3 w-full max-w-[462px]">
             {/* Feature items... */}
-             <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3">
               <div className="w-6 h-6 bg-[#AE5D01] rounded-full flex items-center justify-center flex-shrink-0">
                 <svg
                   className="w-4 h-4 text-white"
@@ -164,9 +160,12 @@ const LoginPopup = ({ isOpen, onClose, onContinue, onForgot, onSignup }) => {
                 Password
               </label>
               <input
-                type="text"
-                name="Password"
-                value={formData.number}
+                // FIX 4: Changed type to "password"
+                type="password"
+                // FIX 2: Changed name to "password" to match state
+                name="password"
+                // FIX 3: Changed value to formData.password
+                value={formData.password}
                 onChange={handleInputChange}
                 placeholder="Password"
                 className="w-full px-4 py-4 border-2 border-[#703102] rounded-lg focus:outline-none focus:border-[#AE5D01] bg-white text-[#595959] text-lg text-center"
@@ -175,13 +174,13 @@ const LoginPopup = ({ isOpen, onClose, onContinue, onForgot, onSignup }) => {
             </div>
 
             <div className="text-right -mt-5">
-            <button
-              onClick={handleForgotClick}
-              className="text-[#595959] font-semibold hover:text-amber-800 cursor-pointer transition-colors "
-            >
-              Forget password?
-            </button>
-          </div>
+              <button
+                onClick={handleForgotClick}
+                className="text-[#595959] font-semibold hover:text-amber-800 cursor-pointer transition-colors "
+              >
+                Forget password?
+              </button>
+            </div>
 
             <button
               type="submit"
@@ -199,16 +198,6 @@ const LoginPopup = ({ isOpen, onClose, onContinue, onForgot, onSignup }) => {
             >
               Signup
             </button>
-          </div>
-
-          <div className="flex justify-start mt-6 md:mt-20">
-            {/* <button
-              onClick={handleGoBack}
-              className="inline-flex items-center text-[#703102] cursor-pointer px-4 py-2 border border-[#AE5D01] rounded-full hover:bg-orange-50 transition-colors"
-            >
-              <ChevronLeft className="w-4 h-4 mr-2" />
-              Go back
-            </button> */}
           </div>
         </div>
       </div>

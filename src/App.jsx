@@ -16,6 +16,7 @@ import ScrollToTop from './components/ScrollToTop';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import CPasswordPopup from './components/CPassword';
+import PasswordPopup from './components/Password';
 
 
 
@@ -27,6 +28,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cPassword" element={<CPasswordPopup isOpen={true} onClose={() => {}} />} />
+        <Route path="/Password" element={<PasswordPopup isOpen={true} onClose={() => {}} />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog-details" element={<BlogDetails />} />
         <Route path="/login" element={<Login />} />

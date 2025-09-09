@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ChevronLeft, X } from "lucide-react";
 import { useNavigate } from "react-router-dom"; // ✅ add this
 
-const OtpPopup = ({ isOpen, onClose, onContinue }) => {
+const OtpPopup = ({ isOpen, onClose, onContinue, onGoBack }) => {
   const [formData, setFormData] = useState({
     otp: "",
   });
@@ -32,7 +32,7 @@ const OtpPopup = ({ isOpen, onClose, onContinue }) => {
   };
 
   const handleGoBack = () => {
-    window.history.back();
+    onGoBack && onGoBack();
   };
 
   if (!isOpen) return null;
@@ -72,6 +72,63 @@ const OtpPopup = ({ isOpen, onClose, onContinue }) => {
               alt="Premium Oil Products"
               className="w-full h-auto object-cover"
             />
+          </div>
+
+          <div className="space-y-3 w-full max-w-[462px]">
+            {/* Feature items... */}
+            <div className="flex items-center space-x-3">
+              <div className="w-6 h-6 bg-[#AE5D01] rounded-full flex items-center justify-center flex-shrink-0">
+                <svg
+                  className="w-4 h-4 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <span className="font-inter font-medium text-lg text-[#703102]">
+                100% Pure & Natural
+              </span>
+            </div>
+            <div className="flex items-center space-x-3">
+              <div className="w-6 h-6 bg-[#AE5D01] rounded-full flex items-center justify-center flex-shrink-0">
+                <svg
+                  className="w-4 h-4 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <span className="font-inter font-medium text-lg text-[#703102]">
+                Premium Quality Guaranteed
+              </span>
+            </div>
+            <div className="flex items-center space-x-3">
+              <div className="w-6 h-6 bg-[#AE5D01] rounded-full flex items-center justify-center flex-shrink-0">
+                <svg
+                  className="w-4 h-4 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <span className="font-inter font-medium text-lg text-[#703102]">
+                Free Shipping on Orders Above ₹999
+              </span>
+            </div>
           </div>
         </div>
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ChevronLeft,X } from "lucide-react";
 
-const CPasswordPopup = ({ isOpen, onClose, onContinue }) => {
+const CPasswordPopup = ({ isOpen, onClose, onContinue, onGoBack }) => {
   const [formData, setFormData] = useState({
     pass: "",
     cpass: ""
@@ -30,7 +30,7 @@ const CPasswordPopup = ({ isOpen, onClose, onContinue }) => {
 
   const handleGoBack = () => {
     // Navigate to the previous page in browser history
-    window.history.back();
+    onGoBack && onGoBack();
   };
 
   if (!isOpen) return null;
