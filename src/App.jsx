@@ -13,6 +13,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import RefundPolicy from './pages/RefundPolicy';
 import TermsOfService from './pages/TermsOfService';
 import ScrollToTop from './components/ScrollToTop';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 
 
 
@@ -25,6 +27,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog-details" element={<BlogDetails />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/refund-policy" element={<RefundPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />

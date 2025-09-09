@@ -25,6 +25,11 @@ const PasswordPopup = ({ isOpen, onClose }) => {
     console.log("Navigate to login");
   };
 
+  const handleGoBack = () => {
+    // Navigate to the previous page in browser history
+    window.history.back();
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -170,8 +175,8 @@ const PasswordPopup = ({ isOpen, onClose }) => {
 
           <div className="flex justify-start mt-6 md:mt-20">
             <button
-              // onClick={handleGoBack}
-              className="inline-flex items-center text-[#703102] cursor-pointer px-4 py-2 border border-[#AE5D01] rounded-full hover:bg-orange-50"
+              onClick={handleGoBack}
+              className="inline-flex items-center text-[#703102] cursor-pointer px-4 py-2 border border-[#AE5D01] rounded-full hover:bg-orange-50 transition-colors"
             >
               <ChevronLeft className="w-4 h-4 mr-2" />
               Go back

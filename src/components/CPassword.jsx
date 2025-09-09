@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ChevronLeft,X } from "lucide-react";
 
-const CPasswordPopup = ({ isOpen, onClose }) => {
+const CPasswordPopup = ({ isOpen, onClose, onContinue }) => {
   const [formData, setFormData] = useState({
     pass: "",
     cpass: ""
@@ -17,12 +17,20 @@ const CPasswordPopup = ({ isOpen, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    onClose();
+    if (onContinue) {
+      onContinue();
+    } else {
+      onClose && onClose();
+    }
   };
 
   const handleLoginClick = () => {
     console.log("Navigate to login");
+  };
+
+  const handleGoBack = () => {
+    // Navigate to the previous page in browser history
+    window.history.back();
   };
 
   if (!isOpen) return null;
@@ -173,8 +181,8 @@ const CPasswordPopup = ({ isOpen, onClose }) => {
 
           <div className="flex justify-start mt-6 md:mt-20">
             <button
-              // onClick={handleGoBack}
-              className="inline-flex items-center text-[#703102] cursor-pointer px-4 py-2 border border-[#AE5D01] rounded-full hover:bg-orange-50"
+              onClick={handleGoBack}
+              className="inline-flex items-center text-[#703102] cursor-pointer px-4 py-2 border border-[#AE5D01] rounded-full hover:bg-orange-50 transition-colors"
             >
               <ChevronLeft className="w-4 h-4 mr-2" />
               Go back

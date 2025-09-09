@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { X } from "lucide-react";
+import { X, ChevronLeft } from "lucide-react";
 import OtpPopup from "./OTP";
 import LoginPopup from "./Login";
 import CPasswordPopup from "./CPassword";
@@ -45,6 +45,11 @@ const SignupPopup = ({ isOpen, onClose }) => {
   const closeLoginPopup = () => {
       setIsLoginPopupOpen(false);
   }
+
+  const handleGoBack = () => {
+    // Navigate to the previous page in browser history
+    window.history.back();
+  };
 
   if (!isOpen) return null;
 
@@ -216,10 +221,21 @@ const SignupPopup = ({ isOpen, onClose }) => {
           <div className="text-center mt-6">
             <span className="text-[#595959]">Already have an account? </span>
            <button
+           
               onClick={handleLoginClick} // UPDATED to open login popup
               className="text-[#AE5D01] font-semibold hover:text-amber-800 cursor-pointer transition-colors border-b-2 border-[#AE5D01] hover:border-amber-800"
             >
               Log in
+            </button>
+          </div>
+
+          <div className="flex justify-start mt-6 md:mt-20">
+            <button
+              onClick={handleGoBack}
+              className="inline-flex items-center text-[#703102] cursor-pointer px-4 py-2 border border-[#AE5D01] rounded-full hover:bg-orange-50 transition-colors"
+            >
+              <ChevronLeft className="w-4 h-4 mr-2" />
+              Go back
             </button>
           </div>
         </div>

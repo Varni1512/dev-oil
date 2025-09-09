@@ -4,12 +4,19 @@ import { FiFacebook } from 'react-icons/fi';
 import { LuTwitter, LuYoutube, LuPhone } from 'react-icons/lu';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { CiHeart, CiSearch, CiShoppingCart, CiUser } from 'react-icons/ci';
-import { NavLink } from 'react-router-dom';
-import SignupPopup from './Signup';
+import { NavLink, useNavigate } from 'react-router-dom';
+import LoginPopup from './Login';
+import ForgetPopup from './Forget';
+import OtpPopup from './OTP';
+import CPasswordPopup from './CPassword';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
+    const [isForgetOpen, setIsForgetOpen] = useState(false);
+    const [isOtpOpen, setIsOtpOpen] = useState(false);
+    const [isCPasswordOpen, setIsCPasswordOpen] = useState(false);
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -19,15 +26,45 @@ const Navbar = () => {
         setIsMenuOpen(false); // Close the menu
     };
 
-    // Function to open signup popup
-    const openSignupPopup = () => {
-        setIsSignupPopupOpen(true);
-        setIsMenuOpen(false); 
+    // Open login popup (replaces previous signup popup)
+    const openLoginPopup = () => {
+        setIsLoginOpen(true);
+        setIsMenuOpen(false);
     };
 
-    // Function to close signup popup
-    const closeSignupPopup = () => {
-        setIsSignupPopupOpen(false);
+    // Flow handlers
+    const closeAllAuthPopups = () => {
+        setIsLoginOpen(false);
+        setIsForgetOpen(false);
+        setIsOtpOpen(false);
+        setIsCPasswordOpen(false);
+    };
+
+    const handleLoginContinue = () => {
+        // After successful login, go home
+        closeAllAuthPopups();
+        navigate('/');
+    };
+
+    const handleGoToForget = () => {
+        setIsLoginOpen(false);
+        setIsForgetOpen(true);
+    };
+
+    const handleForgetContinue = () => {
+        setIsForgetOpen(false);
+        setIsOtpOpen(true);
+    };
+
+    const handleOtpContinue = () => {
+        setIsOtpOpen(false);
+        setIsCPasswordOpen(true);
+    };
+
+    const handleCPasswordContinue = () => {
+        // After password reset, return to login
+        setIsCPasswordOpen(false);
+        setIsLoginOpen(true);
     };
 
     return (
@@ -118,9 +155,9 @@ const Navbar = () => {
                             <CiShoppingCart className="w-7 h-7 font-extrabold lg:w-6 lg:h-6 text-[#703102] lg:text-gray-700" />
                         </button>
 
-                        {/* User icon (only desktop) - Updated to open signup popup */}
+                        {/* User icon (only desktop) - Open login popup */}
                         <button 
-                            onClick={openSignupPopup}
+                            onClick={openLoginPopup}
                             className="hidden lg:flex h-8 w-10 lg:w-[76px] lg:h-12 cursor-pointer items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100 transition"
                         >
                             <CiUser className="w-7 h-7 font-extrabold lg:w-6 lg:h-6 text-gray-700" />
@@ -233,10 +270,10 @@ const Navbar = () => {
                                 </NavLink>
                             </div>
 
-                            {/* Login/Sign Up Button - Updated to open signup popup */}
+                            {/* Login/Sign Up Button - now opens Login */}
                             <div className="mt-8 flex justify-center">
                                 <button 
-                                    onClick={openSignupPopup}
+                                    onClick={openLoginPopup}
                                     className="bg-[#703102] text-white px-8 py-3 rounded-lg font-medium hover:bg-amber-800 transition-colors"
                                 >
                                     Login / Sign Up
@@ -264,10 +301,27 @@ const Navbar = () => {
                 )}
             </nav>
 
-            {/* Signup Popup */}
-            <SignupPopup 
-                isOpen={isSignupPopupOpen} 
-                onClose={closeSignupPopup} 
+            {/* Auth Popups */}
+            <LoginPopup 
+                isOpen={isLoginOpen} 
+                onClose={() => setIsLoginOpen(false)}
+                onContinue={handleLoginContinue}
+                onForgot={handleGoToForget}
+            />
+            <ForgetPopup 
+                isOpen={isForgetOpen} 
+                onClose={() => setIsForgetOpen(false)}
+                onContinue={handleForgetContinue}
+            />
+            <OtpPopup 
+                isOpen={isOtpOpen} 
+                onClose={() => setIsOtpOpen(false)}
+                onContinue={handleOtpContinue}
+            />
+            <CPasswordPopup 
+                isOpen={isCPasswordOpen} 
+                onClose={() => setIsCPasswordOpen(false)}
+                onContinue={handleCPasswordContinue}
             />
         </div>
     )

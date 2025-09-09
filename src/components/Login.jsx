@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { X, ArrowLeft, ChevronLeft } from "lucide-react";
 
-const LoginPopup = ({ isOpen, onClose }) => {
+const LoginPopup = ({ isOpen, onClose, onContinue, onForgot }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     number: ""
@@ -17,12 +19,21 @@ const LoginPopup = ({ isOpen, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    onClose();
+    if (onContinue) {
+      onContinue();
+    } else {
+      onClose && onClose();
+    }
   };
 
-  const handleLoginClick = () => {
-    console.log("Navigate to login");
+  const handleForgotClick = (e) => {
+    e.preventDefault();
+    onForgot && onForgot();
+  };
+
+  const handleGoBack = () => {
+    // Navigate to the previous page in browser history
+    window.history.back();
   };
 
   if (!isOpen) return null;
@@ -72,8 +83,7 @@ const LoginPopup = ({ isOpen, onClose }) => {
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
-                  <path
-                    fillRule="evenodd"
+                  <path fillRule="evenodd"
                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                     clipRule="evenodd"
                   />
@@ -166,7 +176,7 @@ const LoginPopup = ({ isOpen, onClose }) => {
 
             <div className="text-right -mt-5">
             <button
-              onClick={handleLoginClick}
+              onClick={handleForgotClick}
               className="text-[#595959] font-semibold hover:text-amber-800 cursor-pointer transition-colors "
             >
               Forget password?
@@ -182,12 +192,22 @@ const LoginPopup = ({ isOpen, onClose }) => {
           </form>
 
           <div className="text-center mt-6">
-            <span className="text-[#595959]">Don’t have an account? </span>
+            <span className="text-[#595959]">Don't have an account? </span>
             <button
-              onClick={handleLoginClick}
+              onClick={() => navigate('/signup')}
               className="text-[#AE5D01] font-semibold hover:text-amber-800 cursor-pointer transition-colors border-b-2 border-[#AE5D01] hover:border-amber-800"
             >
               Signup
+            </button>
+          </div>
+
+          <div className="flex justify-start mt-6 md:mt-20">
+            <button
+              onClick={handleGoBack}
+              className="inline-flex items-center text-[#703102] cursor-pointer px-4 py-2 border border-[#AE5D01] rounded-full hover:bg-orange-50 transition-colors"
+            >
+              <ChevronLeft className="w-4 h-4 mr-2" />
+              Go back
             </button>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ChevronLeft,X } from "lucide-react";
 
-const ForgetPopup = ({ isOpen, onClose }) => {
+const ForgetPopup = ({ isOpen, onClose, onContinue }) => {
   const [formData, setFormData] = useState({
     email: ""
   });
@@ -16,12 +16,33 @@ const ForgetPopup = ({ isOpen, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    onClose();
+    if (onContinue) {
+      onContinue();
+    } else {
+      onClose && onClose();
+    }
   };
 
   const handleLoginClick = () => {
     console.log("Navigate to login");
+  };
+
+  const handleGoBack = () => {
+    // Navigate to the previous page in browser history
+    console.log("Go back clicked");
+    try {
+      // Check if there's history to go back to
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        console.log("No history to go back to, closing popup");
+        onClose && onClose();
+      }
+    } catch (error) {
+      console.error("Error going back:", error);
+      // Fallback: close the popup
+      onClose && onClose();
+    }
   };
 
   if (!isOpen) return null;
@@ -158,8 +179,9 @@ const ForgetPopup = ({ isOpen, onClose }) => {
 
           <div className="flex justify-start mt-6 md:mt-20">
             <button
-              // onClick={handleGoBack}
-              className="inline-flex items-center text-[#703102] cursor-pointer px-4 py-2 border border-[#AE5D01] rounded-full hover:bg-orange-50"
+              type="button"
+              onClick={handleGoBack}
+              className="inline-flex items-center text-[#703102] cursor-pointer px-4 py-2 border border-[#AE5D01] rounded-full hover:bg-orange-50 transition-colors"
             >
               <ChevronLeft className="w-4 h-4 mr-2" />
               Go back
