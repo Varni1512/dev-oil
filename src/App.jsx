@@ -13,8 +13,6 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import RefundPolicy from './pages/RefundPolicy';
 import TermsOfService from './pages/TermsOfService';
 import ScrollToTop from './components/ScrollToTop';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
 import TrackOrderPage from './pages/TrackOrderPage';
 import BulkOrderPage from './pages/BulkOrderPage';
 import WhyWoodPressedOilsPage from './pages/WhyWood';

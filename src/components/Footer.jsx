@@ -50,7 +50,8 @@ const Footer = () => {
               <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">All Products</a></li>
               <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">Cold & Wood Pressed Oils</a></li>
               <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">About Us</a></li>
-              <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">Blog</a></li>
+              <li><a href="/blog" className="text-amber-200 hover:text-white transition-colors text-sm">Blog</a></li>
+              <li><a href="/why" className="text-amber-200 hover:text-white transition-colors text-sm">Why Choose Us</a></li>
             </ul>
           </div>
 
