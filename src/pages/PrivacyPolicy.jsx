@@ -18,7 +18,7 @@ const PrivacyPolicy = () => {
         <img
           src="/Bleaf.png"
           alt="leaf"
-          className="hidden sm:block pointer-events-none select-none absolute right-40 -bottom-6 sm:-bottom-8 lg:bottom-1 w-[250px] sm:w-[300px] lg:w-[280px] h-auto opacity-80"
+          className="hidden sm:block pointer-events-none select-none absolute right-42 -bottom-6 sm:-bottom-8 lg:bottom-1 w-[250px] sm:w-[300px] lg:w-[280px] h-auto opacity-80"
         />
 
 
@@ -33,7 +33,7 @@ const PrivacyPolicy = () => {
             Last updated: August 29, 2025
           </p>
 
-          <div className="mt-8 md:mt-10 bg-white backdrop-blur-sm  p-5 sm:p-7 md:p-10">
+          <div className="mt-8 md:mt-10  p-5 sm:p-7 md:p-10">
             <p className="text-gray-700 text-xs lg:text-lg leading-relaxed mb-6">
               This Privacy Policy describes how your personal information is collected, used, and shared when
               you visit or make a purchase from www.devnaturaloils.com (the "Site").

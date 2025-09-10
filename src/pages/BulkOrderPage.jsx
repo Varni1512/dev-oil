@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import {Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 import FooterBanner from '../components/FooterBanner';
 
 const BulkOrderPage = () => {
@@ -25,49 +25,51 @@ const BulkOrderPage = () => {
       className="bg-white bg-no-repeat bg-cover bg-center"
       style={{ backgroundImage: "url(/backgroundLines.png)" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div className="max-w-7xl mx-auto px-7 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Breadcrumbs */}
-        <nav className="text-sm text-gray-500 mb-6 text-left max-w-3xl mx-auto">
+        <nav className="text-sm text-[#595959] mb-6 text-left max-w-3xl mx-auto">
           <span>Home</span>
           <span className="mx-2">&gt;</span>
-          <span className="font-semibold text-gray-700">Bulk order enquiry</span>
+          <span className="font-semibold text-[#703102]">Bulk order enquiry</span>
         </nav>
 
         {/* Main Header */}
         <div className="text-center mb-10 sm:mb-12">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#703102] mb-4">
+          <h2 className="font-inter font-bold text-[42px] sm:text-[48px] lg:text-[53.62px] leading-[100%] tracking-[0px] text-center uppercase text-[#703102] mb-4">
             Request a Bulk Order
-          </h1>
-          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            "Fill out the form below and our team will get back to you with the best pricing and details."
+          </h2>
+
+          <p className="font-inter font-medium text-[18px] sm:text-[20px] lg:text-[24px] leading-[100%] tracking-[0px] text-center text-[#595959] max-w-2xl mx-auto">
+            Fill out the form below and our team will get back to you with the best pricing and details.
           </p>
         </div>
 
         {/* Enquiry Form Card */}
         <div className="max-w-3xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-lg p-6 sm:p-10 mb-12">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-8 text-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 text-left">
             BULK ORDER ENQUIRY
+            <hr className='mt-3' />
           </h2>
           <form className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <input type="text" placeholder="First Name*" className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]" />
-              <input type="text" placeholder="Phone Number*" className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]" />
-              <input type="email" placeholder="Email Address*" className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]" />
-              <select className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]">
+              <input type="text" placeholder="First Name*" className="w-full p-3 bg-[#F6F6F6] border border-[#703102] rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]" />
+              <input type="text" placeholder="Phone Number*" className="w-full p-3 bg-[#F6F6F6] border border-[#703102] rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]" />
+              <input type="email" placeholder="Email Address*" className="w-full p-3 bg-[#F6F6F6] border border-[#703102]rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]" />
+              <select className="w-full p-3 bg-[#F6F6F6] border border-[#703102] cursor-pointer rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]">
                 <option>Select State*</option>
                 {states.map(state => <option key={state} value={state}>{state}</option>)}
               </select>
-              <input type="text" placeholder="Product Name*" className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]" />
-              <input type="text" placeholder="Company Name" className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]" />
+              <input type="text" placeholder="Product Name*" className="w-full p-3 bg-[#F6F6F6] border border-[#703102] rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]" />
+              <input type="text" placeholder="Company Name" className="w-full p-3 bg-[#F6F6F6] border border-[#703102] rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]" />
             </div>
             <textarea
               placeholder="Your Message*"
               rows="5"
-              className="w-full p-3 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]"
+              className="w-full p-3 bg-[#F6F6F6] border border-[#703102] rounded-md focus:outline-none focus:ring-2 focus:ring-[#AE5D01]"
             ></textarea>
             <button
               type="submit"
-              className="w-full bg-[#703102] text-white font-bold py-3 px-6 rounded-md hover:bg-[#5a2701] transition-colors duration-300"
+              className="w-full bg-[#703102] text-white font-bold cursor-pointer py-3 px-6 rounded-md hover:bg-[#5a2701] transition-colors duration-300"
             >
               Send Enquiry
             </button>
@@ -75,37 +77,56 @@ const BulkOrderPage = () => {
         </div>
 
         {/* Offer Description */}
-        <p className="text-center text-gray-600 max-w-3xl mx-auto mb-16">
-          We offer bulk edible oil orders with special discounts, customization options, and fast priority shipping to meet your business needs.
+        <p className="text-center text-[#595959] max-w-3xl mx-auto mb-16 font-medium text-[10px] sm:text-[12px] lg:text-[18px]">
+          We offer bulk edible oil orders with special discounts, customization options,<br /> and fast priority shipping to meet your business needs.
         </p>
 
         {/* Contact Information Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
           {/* Call Us Card */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6 flex items-center gap-4">
-            <Phone size={32} className="text-[#703102]" />
-            <div>
-              <h3 className="font-semibold text-gray-700">Call us</h3>
-              <p className="font-bold text-gray-900">+919876543210</p>
-              <p className="text-sm text-gray-500">Mon-Sat, 9am - 7pm</p>
+          <div className="w-[360px] h-[136px] bg-white border border-[#703102] rounded-[10px] p-4 flex items-center gap-5 opacity-100">
+            <img src="/phone.png" alt="Phone" className="w-8 h-8 object-contain" />
+            <div className='space-y-2'>
+              <h3 className="font-medium text-[20px] leading-[24px] tracking-[0px] text-[#595959] font-['Inter']">
+                Call us
+              </h3>
+              <p className="font-semibold text-[24px] leading-[24px] tracking-[0px] text-black font-['Inter']">
+                +919876543210
+              </p>
+              <p className="font-medium text-[22px] leading-[20px] tracking-[0px] text-[#595959] font-['Inter']">
+                Mon-Sat, 9am - 7pm
+              </p>
             </div>
           </div>
+
           {/* Email Us Card */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6 flex items-center gap-4">
-            <Mail size={32} className="text-[#703102]" />
-            <div>
-              <h3 className="font-semibold text-gray-700">Email us</h3>
-              <p className="font-bold text-gray-900">info@devnaturaloils.com</p>
-              <p className="text-sm text-gray-500">We reply within 24 hours</p>
+          <div className="w-[360px] h-[136px] bg-white border border-[#703102] rounded-[10px] p-4 flex items-center gap-5 opacity-100">
+            <img src="/mail.png" alt="Phone" className="w-8 h-8 object-contain" />
+            <div className='space-y-2'>
+              <h3 className="font-medium text-[20px] leading-[24px] tracking-[0px] text-[#595959] font-['Inter']">
+                Email us
+              </h3>
+              <p className="font-semibold text-[24px] leading-[24px] tracking-[0px] text-black font-['Inter']">
+                info@devnaturaloils.com
+              </p>
+              <p className="font-medium text-[22px] leading-[20px] tracking-[0px] text-[#595959] font-['Inter']">
+                We reply within 24 hours
+              </p>
             </div>
           </div>
           {/* Our Address Card */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6 flex items-center gap-4">
-            <MapPin size={32} className="text-[#703102]" />
-            <div>
-              <h3 className="font-semibold text-gray-700">Our Address</h3>
-              <p className="font-bold text-gray-900">123 Oil Mill Street</p>
-              <p className="text-sm text-gray-500">Mumbai, Maharashtra 400001</p>
+          <div className="w-[360px] h-[136px] bg-white border border-[#703102] rounded-[10px] p-4 flex items-center gap-5 opacity-100">
+            <img src="/location.png" alt="Phone" className="w-8 h-8 object-contain" />
+            <div className='space-y-2'>
+              <h3 className="font-medium text-[20px] leading-[24px] tracking-[0px] text-[#595959] font-['Inter']">
+                Our Address
+              </h3>
+              <p className="font-semibold text-[24px] leading-[24px] tracking-[0px] text-black font-['Inter']">
+                123 Oil Mill Street
+              </p>
+              <p className="font-medium text-[18px] leading-[20px] tracking-[0px] text-[#595959] font-['Inter']">
+                Mumbai, Maharashtra 400001
+              </p>
             </div>
           </div>
         </div>

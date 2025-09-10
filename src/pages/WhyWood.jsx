@@ -3,13 +3,13 @@ import React from 'react';
 const WhyWoodPressedOilsPage = () => {
   // Data for the benefits cards, assuming icons are in the public/icons/ directory
   const benefitsData = [
-    { icon: '/icons/icon1.png', text: 'Extracted on wood churner' },
-    { icon: '/icons/icon2.png', text: '100% natural' },
-    { icon: '/icons/icon3.png', text: 'Extracted on wood churner' },
-    { icon: '/icons/icon4.png', text: 'Extracted on wood churner' },
-    { icon: '/icons/icon5.png', text: 'Preservative Free' },
-    { icon: '/icons/icon6.png', text: 'Preservative Free' },
-    { icon: '/icons/icon7.png', text: 'Preservative Free' },
+    { icon: 'icon1.png', text: 'Extracted on wood churner' },
+    { icon: 'icon2.png', text: '100% natural' },
+    { icon: 'icon3.png', text: 'Extracted on wood churner' },
+    { icon: 'icon4.png', text: 'Extracted on wood churner' },
+    { icon: 'icon4.png', text: 'Preservative Free' },
+    { icon: 'icon5.png', text: 'Preservative Free' },
+    { icon: 'icon6.png', text: 'Preservative Free' },
   ];
 
   return (
@@ -27,39 +27,40 @@ const WhyWoodPressedOilsPage = () => {
             <span className="font-semibold text-gray-700">Why Cold Pressed?</span>
           </nav>
           {/* Main Title */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#703102] mb-4">
-            Why Choose Wood-Pressed Oils?
-          </h1>
-          {/* Subtitle */}
-          <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto">
-            Discover the natural, nutrient-rich, and eco-friendly alternative to refined oils for a healthier heart.
-          </p>
+          <div className="text-center mb-10 sm:mb-16 mt-10 lg:mt-16">
+            <h2 className="font-inter font-bold text-[36px] sm:text-[48px] lg:text-[53.62px] leading-[100%] tracking-[0px] text-center uppercase text-[#703102] mb-4">
+              Why Choose Wood-Pressed Oils?
+            </h2>
+
+            <p className="font-inter font-medium text-[18px] sm:text-[20px] lg:text-[24px] leading-[100%] tracking-[0px] text-center text-[#595959] max-w-3xl mx-auto">
+              Discover the natural, nutrient-rich, and eco-friendly alternative<br /> to refined oils for a healthier heart.
+            </p>
+          </div>
         </div>
 
         {/* Comparison Image Section */}
         <div className="flex justify-center px-2 sm:px-4 mb-16 sm:mb-20">
           <img
-            src="/why.png" // The main comparison image
+            src="/why.png"
             alt="Comparison between refined and wood-pressed oils"
-            className="max-w-6xl h-auto rounded-lg shadow-lg"
+            className="w-full max-w-5xl h-auto rounded-lg shadow-lg"
           />
         </div>
+
 
         {/* Benefits Section */}
         <div className="text-center">
           {/* Section Title */}
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#703102] mb-4 relative inline-block">
+          <h2 className="text-2xl sm:text-4xl font-bold text-[#703102] mb-4 relative inline-block  border-b-2">
             Benefits of Wood Pressed Oils
-            {/* Decorative Underline */}
-            <span className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-2/3 h-[2px] bg-[#E5C68A]"></span>
           </h2>
 
           {/* Benefits Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 sm:gap-6 mt-12">
+          <div className="flex flex-wrap justify-center gap-4 lg:gap-4 mt-8 lg:mt-12 max-w-4xl mx-auto">
             {benefitsData.map((benefit, index) => (
               <div
                 key={index}
-                className="bg-[#FFF9F0] border border-[#AE5D01] rounded-xl p-4 flex flex-col items-center justify-center text-center aspect-square"
+                className="w-[108px] h-[150px] bg-[#FFF4CD] border-2 border-[#703102] rounded-[10px] p-2 flex flex-col items-center justify-center text-center"
               >
                 <img
                   src={benefit.icon}
@@ -72,6 +73,9 @@ const WhyWoodPressedOilsPage = () => {
               </div>
             ))}
           </div>
+
+
+
         </div>
       </div>
     </div>
