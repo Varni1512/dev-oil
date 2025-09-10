@@ -11,7 +11,6 @@ import ForgetPopup from './Forget';
 import OtpPopup from './OTP';
 import CPasswordPopup from './CPassword';
 import SOtpPopup from './Sotp';
-import PasswordPopup from './Password';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,8 +19,6 @@ const Navbar = () => {
     const [isForgetOpen, setIsForgetOpen] = useState(false);
     const [isOtpOpen, setIsOtpOpen] = useState(false);
     const [isCPasswordOpen, setIsCPasswordOpen] = useState(false);
-    const [isSOtpOpen, setIsSOtpOpen] = useState(false);
-    const [isPasswordOpen, setIsPasswordOpen] = useState(false);
     const navigate = useNavigate();
 
     const toggleMenu = () => {
@@ -45,8 +42,6 @@ const Navbar = () => {
         setIsForgetOpen(false);
         setIsOtpOpen(false);
         setIsCPasswordOpen(false);
-        setIsSOtpOpen(false);
-        setIsPasswordOpen(false);
     };
 
     const handleLoginContinue = () => {
@@ -89,35 +84,14 @@ const Navbar = () => {
         setIsCPasswordOpen(true);
     };
 
-    // New handlers for SOtp and Password flow
-    const handleSignupContinue = () => {
-        setIsSignupOpen(false);
-        setIsSOtpOpen(true);
-    };
-
     const handleSOtpGoBack = () => {
-        setIsSOtpOpen(false);
-        setIsSignupOpen(true);
-    };
+        setIsOtpOpen(false);
+        setIsForgetOpen(true);
+    }
 
     const handleSOtpContinue = () => {
-        setIsSOtpOpen(false);
-        setIsPasswordOpen(true);
-    };
-
-    const handlePasswordGoBack = () => {
-        setIsPasswordOpen(false);
-        setIsSOtpOpen(true);
-    };
-
-    const handlePasswordContinue = () => {
-        closeAllAuthPopups();
-        navigate('/');
-    };
-
-    const handlePasswordClose = () => {
-        closeAllAuthPopups();
-        navigate('/');
+        setIsOtpOpen(false);
+        setIsCPasswordOpen(true);
     };
 
     const handleCpassGoBack = () => {
@@ -381,8 +355,8 @@ const Navbar = () => {
                 isOpen={isSignupOpen}
                 onClose={() => setIsSignupOpen(false)}
                 onLogin={handleGoToLogin}
-                onContinue={handleSignupContinue}
-                onGoBack={() => setIsSignupOpen(true)}
+                onContinue={() => setIsOtpOpen(true)}
+                onGoBack={()=> setIsSignupOpen(true)}
             />
             <ForgetPopup
                 isOpen={isForgetOpen}
@@ -401,18 +375,6 @@ const Navbar = () => {
                 onClose={() => setIsCPasswordOpen(false)}
                 onContinue={handleCPasswordContinue}
                 onGoBack={handleCpassGoBack}
-            />
-            <SOtpPopup
-                isOpen={isSOtpOpen}
-                onClose={() => setIsSOtpOpen(false)}
-                onContinue={handleSOtpContinue}
-                onGoBack={handleSOtpGoBack}
-            />
-            <PasswordPopup
-                isOpen={isPasswordOpen}
-                onClose={handlePasswordClose}
-                onContinue={handlePasswordContinue}
-                onGoBack={handlePasswordGoBack}
             />
         </div>
     )
