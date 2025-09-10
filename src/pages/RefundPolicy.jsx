@@ -10,17 +10,18 @@ const RefundPolicy = () => {
       >
         {/* Decorative leaves */}
         <img
-          src="/leaf.png"
+          src="/Lleaf.png"
           alt="leaf"
-          className="pointer-events-none select-none absolute -left-6 -top-6 w-24 sm:w-32 md:w-40 opacity-90"
-        />
-        <img
-          src="/leaf.png"
-          alt="leaf"
-          className="pointer-events-none select-none absolute -right-8 bottom-0 rotate-180 w-28 sm:w-36 md:w-44 opacity-90"
+          className="hidden sm:block pointer-events-none select-none absolute left-2 lg:left-42.5 -top-2 sm:-top-4 lg:top-0 w-[250px] sm:w-[300px] lg:w-[280px] h-auto opacity-80"
         />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 bg-white/90">
+        <img
+          src="/Bleaf.png"
+          alt="leaf"
+          className="hidden sm:block pointer-events-none select-none absolute right-42 -bottom-6 sm:-bottom-8 lg:bottom-0 w-[250px] sm:w-[300px] lg:w-[280px] h-auto opacity-80"
+        />
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-10 bg-white rounded-xl shadow-sm mt-20 mb-20">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 text-center">
             Return & Refund Policy
           </h1>

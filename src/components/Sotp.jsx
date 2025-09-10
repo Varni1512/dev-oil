@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ChevronLeft, X } from "lucide-react";
 import { useNavigate } from "react-router-dom"; // ✅ add this
 
-const SOtpPopup = ({ isOpen, onClose, onContinue, onGoBack }) => {
+const SOtpPopup = ({ isOpen, onClose, onContinue, GoBack }) => {
   const [formData, setFormData] = useState({
     otp: "",
   });
@@ -28,9 +28,11 @@ const SOtpPopup = ({ isOpen, onClose, onContinue, onGoBack }) => {
     console.log("Resend OTP");
   };
 
-  const handleGoBack = () => {
-    onGoBack && onGoBack();
+  const handleCloseToHome = () => {
+    if (onClose) onClose();  
+    navigate("/");
   };
+
 
   if (!isOpen) return null;
 
@@ -45,7 +47,7 @@ const SOtpPopup = ({ isOpen, onClose, onContinue, onGoBack }) => {
       <div className="relative w-full max-w-7xl max-h-[95vh] overflow-y-auto bg-[#FFFBEB] rounded-3xl shadow-2xl border-2 border-[#D97706] flex flex-col lg:flex-row">
         {/* Close Button */}
         <button
-          onClick={() => navigate("/")}
+          onClick={onClose}
           className="absolute top-1 right-1 lg:top-4 lg:right-4 z-20 p-2 text-gray-500 cursor-pointer hover:text-gray-700 transition-colors"
         >
           <X size={28} />
@@ -176,7 +178,10 @@ const SOtpPopup = ({ isOpen, onClose, onContinue, onGoBack }) => {
 
           <div className="flex justify-start mt-6 md:mt-20">
             <button
-              onClick={handleGoBack}
+              onClick={() => {
+                if (GoBack) GoBack();
+                else if (onClose) onClose();
+              }}
               className="inline-flex items-center text-[#703102] cursor-pointer px-4 py-2 border border-[#AE5D01] rounded-full hover:bg-orange-50 transition-colors"
             >
               <ChevronLeft className="w-4 h-4 mr-2" />

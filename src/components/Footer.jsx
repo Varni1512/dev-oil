@@ -61,8 +61,8 @@ const Footer = () => {
               <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">Contact Us</a></li>
               <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">FAQ</a></li>
               <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">Shipping Info</a></li>
-              <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">Track Order</a></li>
-              <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">Bulk Order</a></li>
+              <li><a href="/order" className="text-amber-200 hover:text-white transition-colors text-sm">Track Order</a></li>
+              <li><a href="/bulk-order" className="text-amber-200 hover:text-white transition-colors text-sm">Bulk Order</a></li>
             </ul>
           </div>
 

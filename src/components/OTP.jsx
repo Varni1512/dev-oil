@@ -48,7 +48,7 @@ const OtpPopup = ({ isOpen, onClose, onContinue, onGoBack }) => {
       <div className="relative w-full max-w-7xl max-h-[95vh] overflow-y-auto bg-[#FFFBEB] rounded-3xl shadow-2xl border-2 border-[#D97706] flex flex-col lg:flex-row">
         {/* Close Button */}
         <button
-          onClick={() => navigate("/")}
+          onClick={onClose}
           className="absolute top-1 right-1 lg:top-4 lg:right-4 z-20 p-2 text-gray-500 cursor-pointer hover:text-gray-700 transition-colors"
         >
           <X size={28} />

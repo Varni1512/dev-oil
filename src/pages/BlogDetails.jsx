@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, Calendar, Clock } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -38,7 +38,7 @@ export default function BlogDetails() {
       style={{ backgroundImage: "url(/backgroundLines.png)" }}>
       {/* Header */}
       <div className=" ">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link to="/blog" className="inline-flex items-center text-[#AE5D01] mb-2 hover:underline">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Blog
@@ -60,16 +60,19 @@ export default function BlogDetails() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
         <article className=" rounded-lg  overflow-hidden">
           {/* Article Header */}
-          <div className="px-0 md:px-2 lg:px-4 pt-2 md:pt-4 pb-4 md:pb-6">
+          <div className="px-0 md:px-2 lg:px-4 pt-2 md:pt-4 pb-4 md:pb-6 bg-white">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
               Wood-Pressed vs Cold-Pressed: Understanding the Difference
             </h1>
-            <p className="text-gray-600 text-sm">
-              by <span className="text-gray-700 font-semibold">Rajesh Kumar</span>
-            </p>
+            <div className="flex items-center text-gray-600 text-sm mt-2">
+              <User className="w-4 h-4 mr-2 text-gray-500" />
+              <span>
+                by <span className="font-semibold text-gray-800">Rajesh Kumar</span>
+              </span>
+            </div>
           </div>
 
           {/* Featured Image */}
@@ -132,20 +135,22 @@ export default function BlogDetails() {
                 Whether you choose wood-pressed for its traditional authenticity or cold-pressed for its nutritional benefits, you'll making a perfect choice for your family.
               </p>
 
+              <hr className='text-gray-200' />
+
               {/* Tags */}
-              <div className=" pt-4 sm:pt-6 mt-6 sm:mt-8">
+              <div className=" pt-4 sm:pt-4 mt-6 sm:mt-4">
                 <h4 className="text-sm font-semibold text-gray-900 mb-3">Tags</h4>
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-very-light-orange text-dark-orange px-3 py-1 rounded-full text-sm font-medium">
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="text-[#AE5D01] bg-[#FCE289] px-3 py-1 rounded-full text-sm font-medium">
                     Wood Pressed
                   </span>
-                  <span className="bg-very-light-orange text-dark-orange px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="text-[#AE5D01] bg-[#FCE289] px-3 py-1 rounded-full text-sm font-medium">
                     Cold Pressed
                   </span>
-                  <span className="bg-very-light-orange text-dark-orange px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="text-[#AE5D01] bg-[#FCE289] px-3 py-1 rounded-full text-sm font-medium">
                     Traditional Methods
                   </span>
-                  <span className="bg-very-light-orange text-dark-orange px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="text-[#AE5D01] bg-[#FCE289] px-3 py-1 rounded-full text-sm font-medium">
                     Oil Extraction
                   </span>
                 </div>
@@ -158,44 +163,57 @@ export default function BlogDetails() {
       </div>
       <div className='px-4 sm:px-6 lg:px-8'>
         <div ><h1 className='text-[#AE5D01] font-bold mb-6 sm:mb-10 text-xl sm:text-2xl'>Related Blogs</h1> </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post) => (
             <div
               key={post.id}
-              className="flex flex-col gap-4 bg-white border-2 border-[#FCE289] rounded-xl shadow-md text-start overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              // MODIFIED: Updated card styling to match the reference image
+              className="flex flex-col bg-[#FFFEF9] border border-[#FDE6A2] rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover"
+                // MODIFIED: Increased image height on desktop
+                className="w-full h-56 sm:h-64 lg:h-80 object-cover"
               />
 
-              <div className="p-5 sm:p-6">
+              {/* MODIFIED: Increased padding for more space */}
+              <div className="p-6 flex flex-col flex-grow">
                 {/* Meta Information */}
-                <div className="flex justify-between items-center gap-4 mb-4">
-                  <span className={`px-3 py-1 rounded-full text-xs lg:text-base font-bold uppercase tracking-wide text-[#AE5D01] bg-[#FCE289]`}>
+                <div className="flex justify-between items-center mb-4">
+                  {/* MODIFIED: Adjusted category pill style */}
+                  <span className="font-inter font-bold text-[16.54px] leading-[25px] tracking-[0px] align-middle px-4 py-1.5 rounded-full text-[#AE5D01] bg-[#FCE289]">
                     {post.category}
                   </span>
-                  <div className="flex items-center text-[#AE5D01] text-xs lg:text-[16.33px] font-thin">
-                    <Calendar />
-                    {post.date}
+
+                  <div className="flex items-center gap-1.5 font-montserrat font-normal text-[16.33px] leading-[23.33px] tracking-[0px] align-middle text-[#AE5D01]">
+                    <Calendar size={16} className="text-[#AE5D01]" />
+                    <span>{post.date}</span>
                   </div>
+
                 </div>
 
                 {/* Title */}
-                <h3 className="text-base sm:text-xl lg:text-xl font-semibold text-gray-800 mb-2 sm:mb-3 leading-tight">
+                {/* MODIFIED: Updated title typography */}
+                <h3 className="font-inter font-bold text-[19.69px] leading-[30px] tracking-[0px] align-middle text-[#111827] mb-3 flex-grow">
                   {post.title}
                 </h3>
 
+
                 {/* Excerpt */}
-                <p className="text-gray-600 text-sm sm:text-base lg:text-[16.54px] leading-relaxed mb-4 sm:mb-5">
+                <p className="font-inter font-normal text-[16.54px] leading-[25px] tracking-[0px] align-middle text-[#4B5563] mb-6">
                   {post.excerpt}
                 </p>
 
+
                 {/* Read More Link */}
-                <Link to={"/blog-details"} className="text-amber-600 font-medium text-xs lg:text-[16.54px]  sm:text-base hover:text-amber-700 transition-colors duration-200 gap-2 sm:gap-3 flex items-center group">
+                <Link
+                  to="/blog-details"
+                  // MODIFIED: Adjusted "Read More" link style
+                  className="text-[#AE5D01] cursor-pointer font-bold text-sm sm:text-base hover:text-amber-700 transition-colors duration-200 gap-2 flex items-center group mt-auto"
+                >
                   Read More
-                  <FaArrowRight />
+                  <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-200" />
                 </Link>
               </div>
             </div>

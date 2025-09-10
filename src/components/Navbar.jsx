@@ -10,6 +10,8 @@ import SignupPopup from './Signup';
 import ForgetPopup from './Forget';
 import OtpPopup from './OTP';
 import CPasswordPopup from './CPassword';
+import SOtpPopup from './Sotp';
+import PasswordPopup from './Password';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,6 +20,8 @@ const Navbar = () => {
     const [isForgetOpen, setIsForgetOpen] = useState(false);
     const [isOtpOpen, setIsOtpOpen] = useState(false);
     const [isCPasswordOpen, setIsCPasswordOpen] = useState(false);
+    const [isSOtpOpen, setIsSOtpOpen] = useState(false);
+    const [isPasswordOpen, setIsPasswordOpen] = useState(false);
     const navigate = useNavigate();
 
     const toggleMenu = () => {
@@ -41,10 +45,11 @@ const Navbar = () => {
         setIsForgetOpen(false);
         setIsOtpOpen(false);
         setIsCPasswordOpen(false);
+        setIsSOtpOpen(false);
+        setIsPasswordOpen(false);
     };
 
     const handleLoginContinue = () => {
-        // After successful login, go home
         closeAllAuthPopups();
         navigate('/');
     };
@@ -84,14 +89,35 @@ const Navbar = () => {
         setIsCPasswordOpen(true);
     };
 
+    // New handlers for SOtp and Password flow
+    const handleSignupContinue = () => {
+        setIsSignupOpen(false);
+        setIsSOtpOpen(true);
+    };
+
     const handleSOtpGoBack = () => {
-        setIsOtpOpen(false);
-        setIsForgetOpen(true);
-    }
+        setIsSOtpOpen(false);
+        setIsSignupOpen(true);
+    };
 
     const handleSOtpContinue = () => {
-        setIsOtpOpen(false);
-        setIsCPasswordOpen(true);
+        setIsSOtpOpen(false);
+        setIsPasswordOpen(true);
+    };
+
+    const handlePasswordGoBack = () => {
+        setIsPasswordOpen(false);
+        setIsSOtpOpen(true);
+    };
+
+    const handlePasswordContinue = () => {
+        closeAllAuthPopups();
+        navigate('/');
+    };
+
+    const handlePasswordClose = () => {
+        closeAllAuthPopups();
+        navigate('/');
     };
 
     const handleCpassGoBack = () => {
@@ -152,7 +178,7 @@ const Navbar = () => {
                         </NavLink>
                         <NavLink to='/about' className={({ isActive }) => `text-[#703102] font-medium pb-1 transition-colors relative group ${isActive ? "border-b-2 border-[#703102]" : ""}`}>
                             About
-                             {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
+                            {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
                         </NavLink>
                         <NavLink to='/products' className={({ isActive }) => `text-[#703102] font-medium pb-1 transition-colors relative group ${isActive ? "border-b-2 border-[#703102]" : ""}`}>
                             Products
@@ -168,15 +194,15 @@ const Navbar = () => {
                         </NavLink>
                         <NavLink to='/contact' className={({ isActive }) => `text-[#703102] font-medium pb-1 transition-colors relative group ${isActive ? "border-b-2 border-[#703102]" : ""}`}>
                             Contact
-                           {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
+                            {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
                         </NavLink>
                         <NavLink to='/blog' className={({ isActive }) => `text-[#703102] font-medium pb-1 transition-colors relative group ${isActive ? "border-b-2 border-[#703102]" : ""}`}>
                             Blogs
-                           {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
+                            {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
                         </NavLink>
                         <NavLink to='/faqs' className={({ isActive }) => `text-[#703102] font-medium pb-1 transition-colors relative group ${isActive ? "border-b-2 border-[#703102]" : ""}`}>
                             FAQs
-                           {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
+                            {({ isActive }) => !isActive && <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#703102] transition-all duration-300 group-hover:w-full'></span>}
                         </NavLink>
                     </div>
 
@@ -355,6 +381,8 @@ const Navbar = () => {
                 isOpen={isSignupOpen}
                 onClose={() => setIsSignupOpen(false)}
                 onLogin={handleGoToLogin}
+                onContinue={handleSignupContinue}
+                onGoBack={() => setIsSignupOpen(true)}
             />
             <ForgetPopup
                 isOpen={isForgetOpen}
@@ -362,7 +390,7 @@ const Navbar = () => {
                 onContinue={handleForgetContinue}
                 onGoBack={handleForgetGoBack}
             />
-            <OtpPopup
+           <OtpPopup
                 isOpen={isOtpOpen}
                 onClose={() => setIsOtpOpen(false)}
                 onContinue={handleOtpContinue}
@@ -373,6 +401,18 @@ const Navbar = () => {
                 onClose={() => setIsCPasswordOpen(false)}
                 onContinue={handleCPasswordContinue}
                 onGoBack={handleCpassGoBack}
+            />
+            <SOtpPopup
+                isOpen={isSOtpOpen}
+                onClose={() => setIsSOtpOpen(false)}
+                onContinue={handleSOtpContinue}
+                onGoBack={handleSOtpGoBack}
+            />
+            <PasswordPopup
+                isOpen={isPasswordOpen}
+                onClose={handlePasswordClose}
+                onContinue={handlePasswordContinue}
+                onGoBack={handlePasswordGoBack}
             />
         </div>
     )

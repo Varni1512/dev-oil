@@ -15,8 +15,9 @@ import TermsOfService from './pages/TermsOfService';
 import ScrollToTop from './components/ScrollToTop';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import CPasswordPopup from './components/CPassword';
-import PasswordPopup from './components/Password';
+import TrackOrderPage from './pages/TrackOrderPage';
+import BulkOrderPage from './pages/BulkOrderPage';
+import WhyWoodPressedOilsPage from './pages/WhyWood';
 
 
 
@@ -26,13 +27,12 @@ const App = () => {
       <ScrollToTop />
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cPassword" element={<CPasswordPopup isOpen={true} onClose={() => {}} />} />
-        <Route path="/Password" element={<PasswordPopup isOpen={true} onClose={() => {}} />} />
+        <Route path="/" element={''} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/order" element={<TrackOrderPage />} />
+        <Route path="/bulk-order" element={<BulkOrderPage />} />
+        <Route path="/why" element={<WhyWoodPressedOilsPage />} />
         <Route path="/blog-details" element={<BlogDetails />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/refund-policy" element={<RefundPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />

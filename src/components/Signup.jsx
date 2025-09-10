@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { X, ChevronLeft } from "lucide-react";
-import OtpPopup from "./OTP";
 import SOtpPopup from "./Sotp";
 
-const SignupPopup = ({ isOpen, onClose, onLogin }) => {
+const SignupPopup = ({ isOpen, onClose, onLogin,onGoBack }) => {
   const [isSotpPopupOpen, setIsSotpPopupOpen] = useState(false);
+  const Back = () => {
+    setIsSotpPopupOpen(false);
+    onGoBack()
+  }
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -26,14 +29,15 @@ const SignupPopup = ({ isOpen, onClose, onLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isFormValid) return; 
+    if (!isFormValid) return;
 
     console.log("Form submitted:", formData);
-    setIsSotpPopupOpen(true); 
+    setIsSotpPopupOpen(true);
+    
   };
 
   const closeSotpPopup = () => {
-    setIsSotpPopupOpen(false);
+    onClose();
   };
 
   const handleLoginClick = () => {
@@ -65,7 +69,7 @@ const SignupPopup = ({ isOpen, onClose, onLogin }) => {
         >
           <X size={28} />
         </button>
-        
+
         {/* Left Side (Image and Features) */}
         <div className="w-full lg:w-1/2 p-6 sm:p-8 flex flex-col items-center order-1">
           <div className="text-center mb-6">
@@ -215,8 +219,8 @@ const SignupPopup = ({ isOpen, onClose, onLogin }) => {
 
           <div className="text-center mt-6">
             <span className="text-[#595959]">Already have an account? </span>
-           <button
-           
+            <button
+
               onClick={handleLoginClick} // UPDATED to open login popup
               className="text-[#AE5D01] font-semibold hover:text-amber-800 cursor-pointer transition-colors border-b-2 border-[#AE5D01] hover:border-amber-800"
             >
@@ -235,10 +239,11 @@ const SignupPopup = ({ isOpen, onClose, onLogin }) => {
           </div>
         </div>
       </div>
-      
+
       <SOtpPopup
         isOpen={isSotpPopupOpen}
         onClose={closeSotpPopup}
+        GoBack={Back}
       />
     </div>
   );
