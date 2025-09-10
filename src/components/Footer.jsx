@@ -1,5 +1,7 @@
-import React from 'react';
-import { Facebook, Twitter, Instagram, Youtube, Phone, Mail, MapPin } from 'lucide-react';
+// Footer.jsx
+import React from "react";
+import { Link } from "react-router-dom";
+import { Facebook, Twitter, Instagram, Youtube, Phone, Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -13,7 +15,7 @@ const Footer = () => {
             <div className="flex items-center mb-4">
               <div className="w-full h-full ">
                 <img
-                  src="/footer.png" // Replace with your correct path
+                  src="/footer.png"
                   alt="Dev Natural Oils"
                   className="w-full h-full object-cover "
                 />
@@ -27,16 +29,16 @@ const Footer = () => {
 
             {/* Social Media Icons */}
             <div className="flex space-x-4">
-              <a href="#" className="text-amber-300 hover:text-white transition-colors">
+              <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:text-white transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-amber-300 hover:text-white transition-colors">
+              <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:text-white transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-amber-300 hover:text-white transition-colors">
+              <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:text-white transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-amber-300 hover:text-white transition-colors">
+              <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:text-white transition-colors">
                 <Youtube size={20} />
               </a>
             </div>
@@ -46,12 +48,12 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">Home</a></li>
-              <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">All Products</a></li>
-              <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">Cold & Wood Pressed Oils</a></li>
-              <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">About Us</a></li>
-              <li><a href="/blog" className="text-amber-200 hover:text-white transition-colors text-sm">Blog</a></li>
-              <li><a href="/why" className="text-amber-200 hover:text-white transition-colors text-sm">Why Choose Us</a></li>
+              <li><Link to="/" className="text-amber-200 hover:text-white transition-colors text-sm">Home</Link></li>
+              <li><Link to="/products" className="text-amber-200 hover:text-white transition-colors text-sm">All Products</Link></li>
+              <li><Link to="/products/cold-wood" className="text-amber-200 hover:text-white transition-colors text-sm">Cold &amp; Wood Pressed Oils</Link></li>
+              <li><Link to="/about" className="text-amber-200 hover:text-white transition-colors text-sm">About Us</Link></li>
+              <li><Link to="/blog" className="text-amber-200 hover:text-white transition-colors text-sm">Blog</Link></li>
+              <li><Link to="/why" className="text-amber-200 hover:text-white transition-colors text-sm">Why Choose Us</Link></li>
             </ul>
           </div>
 
@@ -59,11 +61,11 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h4 className="text-lg font-semibold text-white mb-4">Customer Service</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">Contact Us</a></li>
-              <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">FAQ</a></li>
-              <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">Shipping Info</a></li>
-              <li><a href="/order" className="text-amber-200 hover:text-white transition-colors text-sm">Track Order</a></li>
-              <li><a href="/bulk-order" className="text-amber-200 hover:text-white transition-colors text-sm">Bulk Order</a></li>
+              <li><Link to="/contact" className="text-amber-200 hover:text-white transition-colors text-sm">Contact Us</Link></li>
+              <li><Link to="/faq" className="text-amber-200 hover:text-white transition-colors text-sm">FAQ</Link></li>
+              <li><Link to="/shipping" className="text-amber-200 hover:text-white transition-colors text-sm">Shipping Info</Link></li>
+              <li><Link to="/order" className="text-amber-200 hover:text-white transition-colors text-sm">Track Order</Link></li>
+              <li><Link to="/bulk-order" className="text-amber-200 hover:text-white transition-colors text-sm">Bulk Order</Link></li>
             </ul>
           </div>
 
@@ -71,10 +73,10 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h4 className="text-lg font-semibold text-white mb-4">Policies</h4>
             <ul className="space-y-2">
-              <li><a href="/privacy-policy" className="text-amber-200 hover:text-white transition-colors text-sm">Privacy Policy</a></li>
-              <li><a href="/refund-policy" className="text-amber-200 hover:text-white transition-colors text-sm">Return Policy</a></li>
-              <li><a href="#" className="text-amber-200 hover:text-white transition-colors text-sm">Shipping Policy</a></li>
-              <li><a href="/terms-of-service" className="text-amber-200 hover:text-white transition-colors text-sm">Terms of Service</a></li>
+              <li><Link to="/privacy-policy" className="text-amber-200 hover:text-white transition-colors text-sm">Privacy Policy</Link></li>
+              <li><Link to="/refund-policy" className="text-amber-200 hover:text-white transition-colors text-sm">Return Policy</Link></li>
+              <li><Link to="/shipping-policy" className="text-amber-200 hover:text-white transition-colors text-sm">Shipping Policy</Link></li>
+              <li><Link to="/terms-of-service" className="text-amber-200 hover:text-white transition-colors text-sm">Terms of Service</Link></li>
             </ul>
           </div>
 
@@ -86,7 +88,7 @@ const Footer = () => {
             <div className="flex items-center mb-4">
               <Phone size={16} className="text-amber-300 mr-3 flex-shrink-0" />
               <div>
-                <p className="text-white text-sm font-medium">+91 9876543210</p>
+                <a href="tel:+919876543210" className="text-white text-sm font-medium">+91 9876543210</a>
                 <p className="text-amber-200 text-xs">Mon-Sat, 9am-7pm</p>
               </div>
             </div>
@@ -95,7 +97,7 @@ const Footer = () => {
             <div className="flex items-center mb-4">
               <Mail size={16} className="text-amber-300 mr-3 flex-shrink-0" />
               <div>
-                <p className="text-white text-sm font-medium">info@devnaturaloils.com</p>
+                <a href="mailto:info@devnaturaloils.com" className="text-white text-sm font-medium">info@devnaturaloils.com</a>
                 <p className="text-amber-200 text-xs">We reply within 24hrs</p>
               </div>
             </div>
@@ -114,10 +116,10 @@ const Footer = () => {
               <div
                 className="relative overflow-hidden rounded-[18.26px]"
                 style={{
-                  width: '203.18px',       // width
-                  height: '113.60px',      // height
+                  width: '203.18px',
+                  height: '113.60px',
                   opacity: 1,
-                  transform: 'rotate(0deg)', // angle
+                  transform: 'rotate(0deg)',
                 }}
               >
                 <iframe
@@ -131,7 +133,6 @@ const Footer = () => {
                   title="Map"
                 ></iframe>
               </div>
-
             </div>
           </div>
         </div>

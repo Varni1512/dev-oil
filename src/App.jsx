@@ -17,8 +17,6 @@ import TrackOrderPage from './pages/TrackOrderPage';
 import BulkOrderPage from './pages/BulkOrderPage';
 import WhyWoodPressedOilsPage from './pages/WhyWood';
 
-
-
 const App = () => {
   return (
     <>
