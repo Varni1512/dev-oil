@@ -16,6 +16,9 @@ import ScrollToTop from './components/ScrollToTop';
 import TrackOrderPage from './pages/TrackOrderPage';
 import BulkOrderPage from './pages/BulkOrderPage';
 import WhyWoodPressedOilsPage from './pages/WhyWood';
+import About from './pages/About';
+import OrderConfirmation from './pages/Order';
+import ContactForm from './pages/Contact';
 
 const App = () => {
   return (
@@ -24,11 +27,14 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={''} />
+        <Route path="/about" element={<About />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/order" element={<TrackOrderPage />} />
         <Route path="/bulk-order" element={<BulkOrderPage />} />
         <Route path="/why" element={<WhyWoodPressedOilsPage />} />
         <Route path="/blog-details" element={<BlogDetails />} />
+        <Route path="/order-confimation" element={<OrderConfirmation />} />
+        <Route path="/contact" element={<ContactForm />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/refund-policy" element={<RefundPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
